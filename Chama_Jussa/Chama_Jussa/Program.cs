@@ -1,4 +1,6 @@
 using Chama_Jussa.BdContextJussa;
+using Chama_Jussa.Interfaces;
+using Chama_Jussa.Repositories;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -14,6 +16,7 @@ builder.Services.AddDbContext<ChamadaContext>
 
 //Adiciona o repositorio
 //Utilizar os exemplos abaixo como guia ------> //builder.Services.AddScoped<IFilmeRepository, FilmeRepository>();
+builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
 
 
 //Adicionar servicos de jwt Bearrer(forma de autenticação)

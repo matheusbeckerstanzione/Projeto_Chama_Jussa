@@ -15,31 +15,100 @@ public class ServicoRepository : IServicoRepository
 
     public void AtualizarIdCorpo(ServicoTb servicoAtualizado)
     {
-        throw new NotImplementedException();
+        try
+        {
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(servicoAtualizado.IdServico)!;
+
+            if (servicoBuscado != null)
+            {
+                servicoBuscado.Descricao = servicoAtualizado.Descricao;
+            }
+
+            _context.ServicoTbs.Update(servicoBuscado);
+            _context.SaveChanges();
+
+        }
+        catch 
+        {
+            throw;
+        }
     }
 
     public void AtualizarIdUrl(Guid Id, ServicoTb servicoAtualizado)
     {
-        throw new NotImplementedException();
+        try
+        {
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id.ToString())!;
+            if (servicoBuscado != null)
+            {
+                servicoBuscado.Descricao = servicoBuscado.Descricao;
+
+                _context.ServicoTbs.Update(servicoBuscado);
+                _context.SaveChanges();
+            }
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     public ServicoTb BuscarPorId(Guid Id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id.ToString())!;
+            return servicoBuscado;
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     public void Cadastrar(ServicoTb novoServico)
     {
-        throw new NotImplementedException();
+        try
+        {
+            novoServico.IdServico = Guid.NewGuid();
+
+            _context.ServicoTbs.Add(novoServico);
+            _context.SaveChanges();
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     public void Deletar(Guid Id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id.ToString())!;
+
+            if (servicoBuscado != null)
+            {
+                _context.ServicoTbs.Remove(servicoBuscado);
+            }
+            _context.SaveChanges();
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     public List<ServicoTb> Listar()
     {
-        throw new NotImplementedException();
+        try
+        {
+            List<ServicoTb> listaServicos = _context.ServicoTbs.ToList();
+            return listaServicos;
+        }
+        catch
+        {
+            throw;
+        }
     }
 }
