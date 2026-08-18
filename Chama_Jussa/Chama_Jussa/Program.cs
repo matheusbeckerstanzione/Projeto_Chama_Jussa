@@ -16,7 +16,10 @@ builder.Services.AddDbContext<ChamadaContext>
 
 //Adiciona o repositorio
 //Utilizar os exemplos abaixo como guia ------> //builder.Services.AddScoped<IFilmeRepository, FilmeRepository>();
+builder.Services.AddScoped<INotificacaoRepository, NotificacaoRepository>();
 builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
 
 
 //Adicionar servicos de jwt Bearrer(forma de autenticação)
@@ -37,13 +40,13 @@ builder.Services.AddAuthentication(options =>
             //valida o tempo de expiração do token
             ValidateLifetime = true,
             //Forma de Criptografia e valida  a chave de autentificacao
-            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("filmes-chave-autenticacao-webapi-dev")),
+            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Chama_Jussa-chave-autenticacao-webapi-dev")),
             //Valida o tempo de expiracao do tonken
             ClockSkew = TimeSpan.FromMinutes(5),
             //nome do issuer (de onde esta vindo)
-            ValidIssuer = "api_filmes",
+            ValidIssuer = "api_Chama_Jussa",
             //nome do audience(para onde esta indo)
-            ValidAudience = "api_filmes"
+            ValidAudience = "api_Chama_Jussa"
         };
     });
 
@@ -53,8 +56,8 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
     {
         Version = "v1",
-        Title = "Filmesm API",
-        Description = "API para gerenciamento de filmes e gêneros",
+        Title = "Chama Jussa API",
+        Description = "API para gerenciamento de chamados para o suporte",
         TermsOfService = new Uri("https://example.com/terms"),
         Contact = new Microsoft.OpenApi.OpenApiContact
         {
