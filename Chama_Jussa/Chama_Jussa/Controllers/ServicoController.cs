@@ -23,8 +23,11 @@ public class ServicoController : Controller
     // Posta o flme
     public async Task<IActionResult> Post([FromForm] ServicoDTO novoServico)
     {
-        if (String.IsNullOrWhiteSpace(novoServico.Titulo) && novoServico.IdServico != null)
-            return BadRequest("O título do serviço são obrigatórios.");
+        if (String.IsNullOrWhiteSpace(novoServico.Titulo))
+            return BadRequest("O título do serviço é obrigatório.");
+
+        if (novoServico.IdUsuario == null || novoServico.IdUsuario == Guid.Empty)
+            return BadRequest("O usuário é obrigatório.");
 
         ServicoTb servico = new ServicoTb();
         if (novoServico.Imagem != null && novoServico.Imagem.Length > 0)
@@ -50,8 +53,12 @@ public class ServicoController : Controller
 
         }
 
-        servico.IdServico = servico.IdServico;
+        servico.IdUsuario = novoServico.IdUsuario.Value;
         servico.Titulo = novoServico.Titulo!;
+        servico.Maquina = novoServico.Maquina!;
+        servico.Localização = novoServico.Localizacao!;
+        servico.Descricao = novoServico.Descricao!;
+        servico.Situacao = novoServico.Situacao!;
 
         try
         {
@@ -93,7 +100,7 @@ public class ServicoController : Controller
     [HttpPut("{Id}")]
 
     // Atualiza o filme pelo id
-    public async Task<IActionResult> Put(Guid Id, ServicoDTO servico)
+    public async Task<IActionResult> Put(Guid Id, [FromForm] ServicoDTO servico)
     {
         var servicoBuscado = _servicoRepository.BuscarPorId(Id);
         if (servicoBuscado == null)

@@ -45,7 +45,7 @@ public class LoginController : ControllerBase
             };
 
             //segundo - definir a chave de acesso ao token
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("filmes-chave-autenticacao-webapi-dev"));
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Chama_Jussa-chave-autenticacao-webapi-dev"));
 
             //terceiro - definir as credenciais do token
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

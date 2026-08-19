@@ -38,7 +38,7 @@ public class NotificacaoRepository : INotificacaoRepository
     {
         try
         {
-            NotificacaoTb notificacaoBuscada = _context.NotificacaoTbs.Find(Id.ToString())!;
+            NotificacaoTb notificacaoBuscada = _context.NotificacaoTbs.Find(Id)!;
             if (notificacaoBuscada != null)
             {
                 notificacaoBuscada.Mensagem = notificacaoBuscada.Mensagem;
@@ -57,7 +57,7 @@ public class NotificacaoRepository : INotificacaoRepository
     {
         try
         {
-            NotificacaoTb notificacaoBuscada = _context.NotificacaoTbs.Find(Id.ToString())!;
+            NotificacaoTb notificacaoBuscada = _context.NotificacaoTbs.Find(Id)!;
             return notificacaoBuscada;
         }
         catch
@@ -85,7 +85,7 @@ public class NotificacaoRepository : INotificacaoRepository
     {
         try
         {
-            NotificacaoTb notificacaoBuscada = _context.NotificacaoTbs.Find(Id.ToString())!;
+            NotificacaoTb notificacaoBuscada = _context.NotificacaoTbs.Find(Id)!;
 
             if (notificacaoBuscada != null)
             {

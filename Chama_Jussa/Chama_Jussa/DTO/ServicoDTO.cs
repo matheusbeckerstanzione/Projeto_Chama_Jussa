@@ -2,6 +2,7 @@
 
 public class ServicoDTO
 {
+    public Guid? IdUsuario { get; set; }
     public Guid? IdServico { get; set; }
     public string? Titulo { get; set; }
     public string? Maquina { get; set; }

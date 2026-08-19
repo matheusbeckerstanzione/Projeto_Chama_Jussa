@@ -24,7 +24,6 @@ public class ServicoRepository : IServicoRepository
                 servicoBuscado.Descricao = servicoAtualizado.Descricao;
             }
 
-            _context.ServicoTbs.Update(servicoBuscado);
             _context.SaveChanges();
 
         }
@@ -38,12 +37,9 @@ public class ServicoRepository : IServicoRepository
     {
         try
         {
-            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id.ToString())!;
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id)!;
             if (servicoBuscado != null)
             {
-                servicoBuscado.Descricao = servicoBuscado.Descricao;
-
-                _context.ServicoTbs.Update(servicoBuscado);
                 _context.SaveChanges();
             }
         }
@@ -57,7 +53,7 @@ public class ServicoRepository : IServicoRepository
     {
         try
         {
-            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id.ToString())!;
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id)!;
             return servicoBuscado;
         }
         catch
@@ -85,7 +81,7 @@ public class ServicoRepository : IServicoRepository
     {
         try
         {
-            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id.ToString())!;
+            ServicoTb servicoBuscado = _context.ServicoTbs.Find(Id)!;
 
             if (servicoBuscado != null)
             {

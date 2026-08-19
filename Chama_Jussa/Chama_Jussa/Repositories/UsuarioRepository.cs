@@ -12,23 +12,69 @@ public class UsuarioRepository : IUsuarioRepository
         _context = context;
     }
 
+
+    public void AtualizarIdCorpo(UsuarioTb UsuarioAtualizado)
+    {
+        try
+        {
+            UsuarioTb UsuarioBuscando = _context.UsuarioTbs.Find(UsuarioAtualizado.IdUsuario)!;
+
+            if (UsuarioBuscando != null)
+            {
+                UsuarioBuscando.Nome = UsuarioAtualizado.Nome;
+            }
+
+            _context.UsuarioTbs.Update(UsuarioBuscando);
+            _context.SaveChanges();
+
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+    }
+
+    public void AtualizarIdUrl(Guid IdAluno, UsuarioTb UsuarioAtualizado)
+    {
+        try
+        {
+            UsuarioTb UsuarioBuscado = _context.UsuarioTbs.Find(IdAluno)!;
+
+            if (UsuarioBuscado != null)
+            {
+                UsuarioBuscado.Nome = UsuarioAtualizado.Nome;
+                UsuarioBuscado.Email = UsuarioAtualizado.Email;
+                UsuarioBuscado.Senha = UsuarioAtualizado.Senha;
+                UsuarioBuscado.Imagem = UsuarioAtualizado.Imagem;
+            }
+
+            _context.UsuarioTbs.Update(UsuarioBuscado!);
+            _context.SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
     public UsuarioTb BuscarPorEmailESenha(string gmail, string senha)
     {
-        try 
+        try
         {
-            UsuarioTb usuarioBuscado = _context.UsuarioTbs.FirstOrDefault(u => u.Email == gmail )!;
+            UsuarioTb usuarioBuscado = _context.UsuarioTbs.FirstOrDefault(u => u.Email == gmail)!;
 
             if (usuarioBuscado != null)
             {
                 bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha);
                 if (confere)
                 {
-                    return usuarioBuscado; 
+                    return usuarioBuscado;
                 }
             }
             return null!;
         }
-        catch 
+        catch
         {
             throw;
         }
@@ -36,7 +82,15 @@ public class UsuarioRepository : IUsuarioRepository
 
     public UsuarioTb BuscarPorId(Guid Id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            UsuarioTb usuarioBuscado = _context.UsuarioTbs.Find(Id)!;
+            return usuarioBuscado;
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     public void Cadastrar(UsuarioTb novoUsuario)
@@ -66,6 +120,26 @@ public class UsuarioRepository : IUsuarioRepository
         }
         catch
         {
+            throw;
+        }
+    }
+
+    public void Deletar(Guid id)
+    {
+        try
+        {
+            UsuarioTb UsuarioBuscado = _context.UsuarioTbs.Find(id)!;
+
+            if (UsuarioBuscado != null)
+            {
+                _context.UsuarioTbs.Remove(UsuarioBuscado);
+            }
+            _context.SaveChanges();
+
+        }
+        catch (Exception)
+        {
+
             throw;
         }
     }

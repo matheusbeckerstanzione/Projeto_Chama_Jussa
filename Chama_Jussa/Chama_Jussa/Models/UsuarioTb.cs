@@ -16,7 +16,7 @@ public partial class UsuarioTb
     [StringLength(160)]
     public string Nome { get; set; } = null!;
 
-    [StringLength(40)]
+    [StringLength(255)]
     public string Senha { get; set; } = null!;
 
     [StringLength(200)]
