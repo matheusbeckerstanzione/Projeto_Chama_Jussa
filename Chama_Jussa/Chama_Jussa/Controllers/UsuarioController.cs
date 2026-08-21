@@ -54,7 +54,6 @@ public class UsuarioController : ControllerBase
             usuario.Imagem = "default.png"; // imagem padrão quando não há upload
         }
 
-        usuario.IdUsuario = novoUsuario.IdUsuario ?? Guid.NewGuid();
         usuario.Nome = novoUsuario.Nome!;
         usuario.Email = novoUsuario.Email!;
         usuario.Senha = novoUsuario.Senha!;
@@ -135,7 +134,7 @@ public class UsuarioController : ControllerBase
     {
         var UsuarioBuscado = _usuarioRepository.BuscarPorId(id);
         if (UsuarioBuscado == null)
-            return NotFound("Aluno não encontrado");
+            return NotFound("Usuário não encontrado");
 
         if (!String.IsNullOrWhiteSpace(UsuarioAtualizado.Nome))
             UsuarioBuscado.Nome = UsuarioAtualizado.Nome;

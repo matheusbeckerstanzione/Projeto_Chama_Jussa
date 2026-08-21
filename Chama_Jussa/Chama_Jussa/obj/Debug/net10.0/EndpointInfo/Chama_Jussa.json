@@ -457,10 +457,6 @@
                   "Nome": {
                     "type": "string"
                   },
-                  "IdUsuario": {
-                    "type": "string",
-                    "format": "uuid"
-                  },
                   "Senha": {
                     "type": "string"
                   },
@@ -475,9 +471,6 @@
               },
               "encoding": {
                 "Nome": {
-                  "style": "form"
-                },
-                "IdUsuario": {
                   "style": "form"
                 },
                 "Senha": {
@@ -577,10 +570,6 @@
                   "Nome": {
                     "type": "string"
                   },
-                  "IdUsuario": {
-                    "type": "string",
-                    "format": "uuid"
-                  },
                   "Senha": {
                     "type": "string"
                   },
@@ -595,9 +584,6 @@
               },
               "encoding": {
                 "Nome": {
-                  "style": "form"
-                },
-                "IdUsuario": {
                   "style": "form"
                 },
                 "Senha": {

@@ -1,4 +1,4 @@
-wwwroot\imagens\dea324ab-01db-42af-bf8c-39db77d385d6.png
-wwwroot\imagens\f2e86e48-fd2d-461a-9f82-a00833f77ac2.png
 wwwroot\imagens\30734f02-de46-4ad1-a818-9a6179d0ea63.png
 wwwroot\imagens\2f94e10a-8bbc-4a4f-b3d6-93b1a1600f5c.png
+wwwroot\imagens\dea324ab-01db-42af-bf8c-39db77d385d6.png
+wwwroot\imagens\f2e86e48-fd2d-461a-9f82-a00833f77ac2.png
